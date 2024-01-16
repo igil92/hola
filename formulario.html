@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMULARIO</title>
+    <style>
+        body {
+            color: white;
+            font-size: 3em;
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+            background-color: black; /* Cambiar el color de fondo a negro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Estilo personalizado para el cuadro de diálogo personalizado */
+        #custom-dialog {
+            padding: 20px;
+            background-color: black;
+            border: 2px solid red;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    // Solicitar al usuario que indique su nombre mediante un cuadro de diálogo personalizado
+    var nombre = prompt("Por favor, indica tu nombre:", "");
+
+    // Verificar si el usuario ingresó un nombre
+    if (nombre !== null && nombre.trim() !== "") {
+        // Función para imprimir "DUL" rápidamente
+        function imprimirDULRapidamente() {
+            var dulElement = document.createElement('div');
+            dulElement.textContent = "DUL";
+            dulElement.style.position = 'absolute';
+            dulElement.style.left = Math.random() * window.innerWidth + 'px';
+            dulElement.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(dulElement);
+        }
+
+        // Imprimir "DUL" rápidamente con un intervalo de 100 milisegundos (0.1 segundos)
+        var intervalID = setInterval(imprimirDULRapidamente, 100);
+    } else {
+        // Mostrar un mensaje si el usuario no ingresó un nombre
+        document.write("No ingresaste un nombre.");
+    }
+
+    // Restaurar el fondo y detener el bucle al cerrar la página
+    window.addEventListener('beforeunload', function() {
+        clearInterval(intervalID);
+    });
+</script>
+
+</body>
+</html>
